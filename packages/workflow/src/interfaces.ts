@@ -13,8 +13,8 @@ export interface IActionInputs {
 export interface IActionOutputs {
     [key: string]: IActionOutputType
 }
-type IActionInputType = any // TODO
-type IActionOutputType = any // TODO
+type IActionInputType = Record<string, unknown> // TODO
+type IActionOutputType = Record<string, unknown> // TODO
 
 export interface IActionResult {
     outputs: IActionOutputs,
@@ -45,6 +45,6 @@ export interface IWorkflow {
         actionName: string,
         flowEdgeId: string
     }],
-    contextData: any // TODO
+    contextData: Record<string, unknown> // TODO
     execute()
 }

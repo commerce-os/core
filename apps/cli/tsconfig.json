@@ -20,5 +20,5 @@
     "strictNullChecks": false,
 		"types": ["node", "jest"]
   },
-  "include": ["./src/index.ts", "./src/**/*.ts", "__tests__/**/*"]
+  "include": ["./src/", "__tests__/**/*"]
 }
