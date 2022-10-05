@@ -1,3 +1,8 @@
-import * as interfaces from './interfaces.js'
+import { IAction, IWorkflow, IActionContext, IActionList } from './interfaces.js'
 
-export { interfaces }
+export { 
+    IAction,
+    IWorkflow,
+    IActionContext,
+    IActionList
+ }
