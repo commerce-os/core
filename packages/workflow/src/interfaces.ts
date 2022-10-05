@@ -41,10 +41,10 @@ export interface IWorkflow {
         source: string,
         target: string
     }],
-    execStack: [{ // TODO
+    execStack?: [{ // TODO
         actionName: string,
         flowEdgeId: string
     }],
-    contextData: Record<string, unknown> // TODO
+    contextData?: Record<string, unknown> // TODO
     execute()
 }
