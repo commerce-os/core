@@ -8,13 +8,19 @@ export interface IAction {
 }
 
 export interface IActionInputs {
-    [key: string]: IActionInputType
+    [key: string]: IActionInput
 }
-export interface IActionOutputs {
-    [key: string]: IActionOutputType
+export interface IActionOutputs{
+    [key: string]: IActionOutput
 }
-type IActionInputType = Record<string, unknown> // TODO
-type IActionOutputType = Record<string, unknown> // TODO
+export interface IActionInput { 
+    name: string,
+    data: Record<string, unknown> 
+}
+export type IActionOutput = {
+    name: string,
+    handler:  (context: IActionContext) => Promise<IActionResult> // the output handler = action.execute of the next action in the stack
+}
 
 export interface IActionResult {
     outputs: IActionOutputs,
@@ -27,6 +33,7 @@ export interface IActionResult {
 export interface IActionContext {
     prevActionId: string,
     prevActionResult: IActionResult,
+    prevActionResults:  Record<string, IActionResult>
     workflow: IWorkflow
 }
 
@@ -46,5 +53,6 @@ export interface IWorkflow {
         flowEdgeId: string
     }],
     contextData?: Record<string, unknown> // TODO
-    execute()
+    run()
+    load(fileName: string)
 }
