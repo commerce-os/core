@@ -7,6 +7,8 @@ import ReactFlow, {
   Connection,
   Edge,
   ConnectionLineType,
+  MiniMap,
+  Controls,
 } from 'reactflow';
 import IfNode from './IfNode';
 
@@ -71,6 +73,19 @@ const defaultEdgeOptions = {
   type: 'smoothstep',
 };
 
+const nodeColor = (node: any) => {
+  switch (node.type) {
+    case 'input':
+      return 'red';
+    case 'default':
+      return '#00ff00';
+    case 'output':
+      return 'rgb(0,0,255)';
+    default:
+      return '#eee';
+  }
+};
+
 function Flow() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
@@ -78,6 +93,9 @@ function Flow() {
     (params: Connection | Edge) => setEdges((eds) => addEdge(params, eds)),
     [setEdges]
   );
+  const saveChart = (e: any) => {
+    console.log(nodes, edges);
+  }
   return (
     <div className={styles.flow}>
       <ReactFlow
@@ -90,7 +108,13 @@ function Flow() {
         defaultEdgeOptions={defaultEdgeOptions}
         connectionLineType={ConnectionLineType.SmoothStep}
         fitView
-      />
+      >
+        <MiniMap nodeColor={nodeColor} nodeStrokeWidth={3} />
+        <Controls />
+      </ReactFlow>
+      <div className={styles.actionsPanel}>
+        <button className={styles.saveButton} onClick={saveChart}>Save chart</button>
+      </div>         
     </div>
   );
 }

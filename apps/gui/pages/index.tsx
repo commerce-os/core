@@ -2,7 +2,6 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 
 import Flow from '../components/Flow';
-import BypasSSR from '../components/BypassSSR';
 import styles from '../styles/Home.module.css';
 
 const Home: NextPage = () => {  

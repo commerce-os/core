@@ -16,3 +16,29 @@
     width: 200px;
     border-radius: 5px;
   }
+
+ .footer {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #eee;
+    padding: 0 1rem;
+  }
+
+  .actionsPanel {
+    position: absolute;
+    z-index: 5;
+    margin: 15px;
+    padding: 5px;
+    right: 5px;
+    width: 150px;
+    top: 40px;
+    height: 100px;
+    background-color: black;
+    border: 1px solid white;
+  }
+
+  .saveButton {
+    width: 100%;
+  }
+  
